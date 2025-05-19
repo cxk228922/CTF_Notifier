@@ -11,7 +11,8 @@ from datetime import datetime, timedelta, timezone
 import requests
 import pytz
 
-WEBHOOK_URL = "" # Fill in your Discord Webhook URL
+# Ensure you have the right webhook URL
+WEBHOOK_URL = ""
 CHECK_INTERVAL = 3600  # Check interval (sec)
 DAYS_TO_LOOK_AHEAD = 14  # Check for the next few days
 CTF_TIME_API = "https://ctftime.org/api/v1/events/"
@@ -211,7 +212,7 @@ def send_to_discord(events):
         if embed is None:
             continue
         payload = {
-            "content": f"**New CTF Event Notification** \n{event['title']} will start at {embed['fields'][0]['value']}",
+            "content": f"# New CTF Event Notification \n**{event['title']}** will start at **{embed['fields'][0]['value']}** (GMT+8 Taipei Time)",
             "embeds": [embed]
         }
 
